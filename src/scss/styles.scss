@@ -1,12 +1,20 @@
 
-$main-bg-color: #FFFFFF;
 
-* {
-	margin: 0; 
-	padding: 0;
-}
+/* 
+ * =====================================================================
+ *
+ * 15 Puzzle
+ * styles.css
+ * Base rules and style guide for this game
+ * Mar 2018
+ * @author:  Andres Hernandez <hernandez.andres.d@gmail.com>
+ *
+ * =====================================================================
+ */
 
-html,
-body {
-	background-color: $main-bg-color; 
-}
+// Config 
+@import 'settings';
+@import 'grid';
+
+// Component 
+@import 'puzzle';

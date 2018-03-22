@@ -11,15 +11,15 @@
     ]
   },
   "scripts": {
-    "compile": "babel -d public/ src/",
-    "sass": "node-sass --include-path scss src/scss/styles.scss public/css/styles.css",
-    "sass-watch": "nodemon -e scss -x \"npm run sass\"",
-    "prepublish": "npm run compile"
+    "dev": "npm-run-all -s sass:build -p babel sass:watch",
+    "babel": "babel -w src/js -d public/js",
+    "sass:build": "node-sass src/scss -o public/css",
+    "sass:watch": "node-sass -w src/scss -o public/css"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "node-sass": "^4.7.2",
-    "nodemon": "^1.17.2"
+    "npm-run-all": "^4.1.2"
   }
 }

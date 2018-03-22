@@ -1,0 +1,38 @@
+
+
+
+/*
+ * Puzzle
+ */
+
+$puzzle-size: 4; 
+$max-puzzle-size: 1024px;
+$max-tile-size: $max-puzzle-size/$puzzle-size; 
+
+#puzzle {
+	width: 100%;
+	height: 100%;
+	max-width: $max-puzzle-size;
+	max-height: $max-puzzle-size;
+	border: 1px solid $color-black-80; 
+
+	background-color: $color-gray;
+
+	.puzzle__container {
+		position: relative;
+		padding: 10px;
+
+		background-color: $color-black;
+	}
+
+	.puzzle__tile {
+		position: relative;
+		width: $max-tile-size; 
+		height: $max-tile-size;
+		float: left;
+
+		background-color: $color-gray;
+	}
+}
+
+
