@@ -1,7 +1,45 @@
-* {
-  margin: 0;
-  padding: 0; }
+/* 
+ * =====================================================================
+ *
+ * 15 Puzzle
+ * styles.css
+ * Base rules and style guide for this game
+ * Mar 2018
+ * @author:  Andres Hernandez <hernandez.andres.d@gmail.com>
+ *
+ * =====================================================================
+ */
+/*
+ * Grid
+ */
+.wrapper {
+  width: 100%;
+  height: 100%;
+  margin-top: 10vh; }
 
-html,
-body {
-  background-color: #FFFFFF; }
+.container {
+  width: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 0 15px; }
+
+/*
+ * Puzzle
+ */
+#puzzle {
+  width: 100%;
+  height: 100%;
+  max-width: 1024px;
+  max-height: 1024px;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  background-color: #cccccc; }
+  #puzzle .puzzle__container {
+    position: relative;
+    padding: 10px;
+    background-color: #000000; }
+  #puzzle .puzzle__tile {
+    position: relative;
+    width: 256px;
+    height: 256px;
+    float: left;
+    background-color: #cccccc; }
