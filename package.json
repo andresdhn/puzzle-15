@@ -1,0 +1,23 @@
+{
+  "name": "puzzle-15",
+  "version": "1.0.0",
+  "description": "15 puzzle is a sliding puzzle that consists of a frame of numbered square tiles in random order with one tile missing",
+  "author": "Andres Hernandez <hernandez.andres.d@gmail.com>",
+  "license": "ISC",
+  "main": "index.js",
+  "babel": {
+    "presets": [
+      "env"
+    ]
+  },
+  "scripts": {
+    "compile": "babel -d public/ src/",
+    "styles": "node-sass --include-path scss src/scss/styles.scss public/css/styles.css",
+    "prepublish": "npm run compile"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "node-sass": "^4.7.2"
+  }
+}
