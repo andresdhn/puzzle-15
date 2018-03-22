@@ -2,11 +2,10 @@
 
 // Settings
 
-$color-white: #ffffff;
-$color-black: #000000;
-$color-gray: #cccccc;
+$color-white: 		#ffffff;
+$color-black: 		#000000;
+$color-black-80: 	rgba($color-black, 0.8);
+$color-gray: 		#cccccc;
 
-$color-black-80: rgba($color-black, 0.8);
-
-$color-bg: $color-white;
-
+$color-bg: 			$color-white;
+$color-neutral:		rgba($color-gray, 0.2);

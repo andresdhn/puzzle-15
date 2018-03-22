@@ -1,23 +1,21 @@
 
+const puzzleSize = 4; 
+const puzzle = document.getElementById('puzzle__container');
 
-var newOne = () => {
- console.log("Hello World..!");
+const injectTiles = () => {
+	let totalTiles = Math.pow(puzzleSize, 2); 
+	let tiles = ''; 
+	let i = 1;
+	while (i<totalTiles){
+		tiles += `
+			<div class="puzzle__tile">
+				<p class="puzzle__tile-number">${ i }</p>
+			</div>
+		`;
+		i++; 
+	}
+
+	return tiles;
 }
 
-
-class Puzzle {
-	constructor(name) {
-      this.name = name;
-    }
-    
-    get Name() {
-      return this.name;
-    }
-    
-    set Name(name) {
-      this.name = name;
-    }
-}
-
-let puzzle = new Puzzle('John Snow'); 
-console.log(puzzle.Name); 
+puzzle.innerHTML = injectTiles(); 

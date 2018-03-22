@@ -1,32 +1,18 @@
-"use strict";
+'use strict';
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var puzzleSize = 4;
+var puzzle = document.getElementById('puzzle__container');
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+var injectTiles = function injectTiles() {
+	var totalTiles = Math.pow(puzzleSize, 2);
+	var tiles = '';
+	var i = 1;
+	while (i < totalTiles) {
+		tiles += '\n\t\t\t<div class="puzzle__tile">\n\t\t\t\t<p class="puzzle__tile-number">' + i + '</p>\n\t\t\t</div>\n\t\t';
+		i++;
+	}
 
-var newOne = function newOne() {
-  console.log("Hello World..!");
+	return tiles;
 };
 
-var Puzzle = function () {
-  function Puzzle(name) {
-    _classCallCheck(this, Puzzle);
-
-    this.name = name;
-  }
-
-  _createClass(Puzzle, [{
-    key: "Name",
-    get: function get() {
-      return this.name;
-    },
-    set: function set(name) {
-      this.name = name;
-    }
-  }]);
-
-  return Puzzle;
-}();
-
-var puzzle = new Puzzle('John Snow');
-console.log(puzzle.Name);
+puzzle.innerHTML = injectTiles();
