@@ -12,12 +12,14 @@
   },
   "scripts": {
     "compile": "babel -d public/ src/",
-    "styles": "node-sass --include-path scss src/scss/styles.scss public/css/styles.css",
+    "sass": "node-sass --include-path scss src/scss/styles.scss public/css/styles.css",
+    "sass-watch": "nodemon -e scss -x \"npm run sass\"",
     "prepublish": "npm run compile"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1",
-    "node-sass": "^4.7.2"
+    "node-sass": "^4.7.2",
+    "nodemon": "^1.17.2"
   }
 }
