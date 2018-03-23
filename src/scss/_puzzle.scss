@@ -28,14 +28,14 @@ $max-tile-size: 90%/$puzzle-size;
 	width: $max-tile-size; 
 	height: $max-tile-size;
 	
-	display: table-cell;
-	vertical-align: middle;
+	display: flex;
+	justify-content: center;
 
 	margin: 1%;
 	border-radius: 5px;
 	text-align: center;
 
-	transition: all  1s ease-out
+	transition: all 1s ease-out;
 
 	&:not(.blank){
 		background-color: $color-gray;
