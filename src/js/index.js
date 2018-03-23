@@ -1,21 +1,29 @@
 
-const puzzleSize = 4; 
-const puzzle = document.getElementById('puzzle__container');
+const puzzleSize = Math.pow(4, 2); 
+const puzzle = document.getElementById('puzzle');
 
-const injectTiles = () => {
-	let totalTiles = Math.pow(puzzleSize, 2); 
-	let tiles = ''; 
-	let i = 1;
-	while (i<totalTiles){
-		tiles += `
-			<div class="puzzle__tile">
-				<p class="puzzle__tile-number">${ i }</p>
-			</div>
-		`;
-		i++; 
+
+const createTiles = () => {
+	for (let i=1; i<puzzleSize+1; i++){
+		let tile = document.createElement('div');
+		
+		if (i==puzzleSize) {
+			tile.classList.add('puzzle__tile', 'blank')
+		}
+		else {
+			tile.innerHTML = i;	
+			tile.classList.add('puzzle__tile',  'puzzle__tile--' + i )
+		}
+		
+		tile.addEventListener('click', (e) => handleClick(e)); 
+
+		puzzle.appendChild(tile); 
 	}
-
-	return tiles;
 }
 
-puzzle.innerHTML = injectTiles(); 
+const handleClick = (e) => {
+	console.log(e.target)
+}
+
+
+createTiles();

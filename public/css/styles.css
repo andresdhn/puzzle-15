@@ -9,9 +9,6 @@
  *
  * =====================================================================
  */
-/*
- * Grid
- */
 * {
   margin: 0;
   padding: 0; }
@@ -21,37 +18,35 @@ body {
   width: 100%;
   height: 100%; }
 
-body {
-  background-color: rgba(204, 204, 204, 0.2); }
-
 .wrapper {
   width: 100%;
   height: 100%;
   margin-top: 10vh; }
 
-/*
- * Puzzle
- */
 #puzzle {
-  width: 200px;
-  height: 200px;
+  display: table;
+  width: 350px;
+  height: 350px;
   margin-right: auto;
   margin-left: auto;
-  padding: 5px;
-  background-color: #ffffff;
-  border: 2px solid rgba(0, 0, 0, 0.8);
-  border-radius: 5px; }
+  padding: 10px;
+  background-color: rgba(204, 204, 204, 0.2);
+  border-radius: 15px;
+  cursor: pointer; }
   #puzzle:after {
     content: '';
     display: block;
     padding-bottom: 100%; }
 
-#puzzle__container {
-  width: 100%;
-  height: 100%; }
-
 .puzzle__tile {
-  width: 25%;
-  height: 25%;
   float: left;
-  background-color: #cccccc; }
+  width: 22.5%;
+  height: 22.5%;
+  display: table-cell;
+  vertical-align: middle;
+  margin: 1%;
+  border-radius: 5px;
+  text-align: center;
+  transition: all 1s ease-out .puzzle__tile; }
+  .puzzle__tile :not(.blank) {
+    background-color: #cccccc; }
