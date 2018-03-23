@@ -42,11 +42,11 @@ body {
   float: left;
   width: 22.5%;
   height: 22.5%;
-  display: table-cell;
-  vertical-align: middle;
+  display: flex;
+  justify-content: center;
   margin: 1%;
   border-radius: 5px;
   text-align: center;
-  transition: all 1s ease-out .puzzle__tile; }
-  .puzzle__tile :not(.blank) {
+  transition: all 1s ease-out; }
+  .puzzle__tile:not(.blank) {
     background-color: #cccccc; }
