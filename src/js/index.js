@@ -8,6 +8,7 @@
  * 
  */
 
+let tiles 			= []; 
 const puzzleSize 	= Math.pow(4, 2); 
 const puzzle 		= document.getElementById('puzzle');
 
@@ -25,7 +26,7 @@ const shuffleTiles = () => {
  */
 
 const initPuzzle = () => {
-	let tiles = shuffleTiles(); 
+	tiles = shuffleTiles(); 
 
 	for (let i=0; i<tiles.length; i++){
 		let tile = document.createElement('div');
@@ -50,6 +51,19 @@ const initPuzzle = () => {
 }
 
 
+const checkSolvedPuzzle = () =>{
+
+	for (let i=1; tiles.length-1; i++) {
+		if (tiles[i] !== i ) {
+			return false;
+		}
+	}
+
+	alert('You did it!'); 
+	initPuzzle();
+}
+
+
 /*
  * Handles click event on tiles
  */
@@ -65,7 +79,7 @@ const handleTileClick = (e) => {
 		return false;
 	}
 
-	console.log(selectedTile)
+	checkSolvedPuzzle(); 
 }
 
 

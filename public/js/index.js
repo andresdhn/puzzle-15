@@ -9,6 +9,7 @@
  * 
  */
 
+var tiles = [];
 var puzzleSize = Math.pow(4, 2);
 var puzzle = document.getElementById('puzzle');
 
@@ -29,7 +30,7 @@ var shuffleTiles = function shuffleTiles() {
  */
 
 var initPuzzle = function initPuzzle() {
-	var tiles = shuffleTiles();
+	tiles = shuffleTiles();
 
 	for (var i = 0; i < tiles.length; i++) {
 		var tile = document.createElement('div');
@@ -52,6 +53,18 @@ var initPuzzle = function initPuzzle() {
 	}
 };
 
+var checkSolvedPuzzle = function checkSolvedPuzzle() {
+
+	for (var i = 1; tiles.length - 1; i++) {
+		if (tiles[i] !== i) {
+			return false;
+		}
+	}
+
+	alert('You did it!');
+	initPuzzle();
+};
+
 /*
  * Handles click event on tiles
  */
@@ -67,7 +80,7 @@ var handleTileClick = function handleTileClick(e) {
 		return false;
 	}
 
-	console.log(selectedTile);
+	checkSolvedPuzzle();
 };
 
 initPuzzle();
