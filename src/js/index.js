@@ -1,29 +1,72 @@
 
-const puzzleSize = Math.pow(4, 2); 
-const puzzle = document.getElementById('puzzle');
+/**
+ * Puzzle 15.
+ *
+ * index.js
+ * @version 1.0.0
+ * @author [Andres Hernandez](https://github.com/andresdhn)
+ * 
+ */
+
+const puzzleSize 	= Math.pow(4, 2); 
+const puzzle 		= document.getElementById('puzzle');
+
+/*
+ * Shuffle Array  
+ */
+
+const shuffleTiles = () => {
+	return Array(puzzleSize).fill().map( (e, i) => i + 1 ).sort( () => Math.random()-0.5 );
+}
 
 
-const createTiles = () => {
-	for (let i=1; i<puzzleSize+1; i++){
+/*
+ * Initializes puzzle an injects tiles
+ */
+
+const initPuzzle = () => {
+	let tiles = shuffleTiles(); 
+
+	for (let i=0; i<tiles.length; i++){
 		let tile = document.createElement('div');
+		tile.id = tiles[i]; 
+
 		
-		if (i==puzzleSize) {
+		if (tiles[i]===puzzleSize) {
+			// last tile is blank
 			tile.classList.add('puzzle__tile', 'blank')
 		}
 		else {
-			tile.innerHTML = i;	
-			tile.classList.add('puzzle__tile',  'puzzle__tile--' + i )
+			// tile class and number
+			tile.innerHTML = tiles[i];	
+			tile.classList.add('puzzle__tile',  'puzzle__tile--' + tiles[i] )
 		}
 		
-		tile.addEventListener('click', (e) => handleClick(e)); 
 
-		puzzle.appendChild(tile); 
+		tile.addEventListener('click', (e) => handleTileClick(e)); 
+
+		puzzle.appendChild(tile);
 	}
 }
 
-const handleClick = (e) => {
-	console.log(e.target)
+
+/*
+ * Handles click event on tiles
+ */
+
+const handleTileClick = (e) => {
+
+	let selectedTile = e.target; 
+	
+	// Ignore click on blank tile  
+	if (selectedTile.id == puzzleSize) {
+		e.preventDefault(); 
+		e.stopPropagation();
+		return false;
+	}
+
+	console.log(selectedTile)
 }
 
 
-createTiles();
+initPuzzle();
