@@ -19,7 +19,7 @@ var puzzle = document.getElementById('puzzle');
 
 var shuffleTiles = function shuffleTiles() {
 	return Array(puzzleSize).fill().map(function (e, i) {
-		return i + 1;
+		return i;
 	}).sort(function () {
 		return Math.random() - 0.5;
 	});
@@ -36,8 +36,8 @@ var initPuzzle = function initPuzzle() {
 		var tile = document.createElement('div');
 		tile.id = tiles[i];
 
-		if (tiles[i] === puzzleSize) {
-			// last tile is blank
+		if (tiles[i] === 0) {
+			// tile 0 is blank
 			tile.classList.add('puzzle__tile', 'blank');
 		} else {
 			// tile class and number
@@ -53,9 +53,14 @@ var initPuzzle = function initPuzzle() {
 	}
 };
 
+/*
+ * Checks for solved puzzled 
+ *
+ */
+
 var checkSolvedPuzzle = function checkSolvedPuzzle() {
 
-	for (var i = 1; tiles.length - 1; i++) {
+	for (var i = 0; i < tiles.length; i++) {
 		if (tiles[i] !== i) {
 			return false;
 		}
@@ -72,14 +77,23 @@ var checkSolvedPuzzle = function checkSolvedPuzzle() {
 var handleTileClick = function handleTileClick(e) {
 
 	var selectedTile = e.target;
+	var selectedTileNum = parseInt(selectedTile.innerHTML);
+	var selectedTilePos = tiles.indexOf(selectedTileNum);
+	var blankTilePos = tiles.indexOf(0);
 
 	// Ignore click on blank tile  
-	if (selectedTile.id == puzzleSize) {
+	if (selectedTile.classList.contains('blank')) {
 		e.preventDefault();
 		e.stopPropagation();
 		return false;
 	}
 
+	console.log(tiles);
+
+	tiles.splice(selectedTilePos, 1, 0);
+	tiles.splice(blankTilePos, 1, selectedTileNum);
+
+	console.log(tiles);
 	checkSolvedPuzzle();
 };
 

@@ -17,7 +17,7 @@ const puzzle 		= document.getElementById('puzzle');
  */
 
 const shuffleTiles = () => {
-	return Array(puzzleSize).fill().map( (e, i) => i + 1 ).sort( () => Math.random()-0.5 );
+	return Array(puzzleSize).fill().map( (e, i) => i ).sort( () => Math.random()-0.5 );
 }
 
 
@@ -31,10 +31,9 @@ const initPuzzle = () => {
 	for (let i=0; i<tiles.length; i++){
 		let tile = document.createElement('div');
 		tile.id = tiles[i]; 
-
 		
-		if (tiles[i]===puzzleSize) {
-			// last tile is blank
+		if (tiles[i]===0) {
+			// tile 0 is blank
 			tile.classList.add('puzzle__tile', 'blank')
 		}
 		else {
@@ -43,17 +42,20 @@ const initPuzzle = () => {
 			tile.classList.add('puzzle__tile',  'puzzle__tile--' + tiles[i] )
 		}
 		
-
 		tile.addEventListener('click', (e) => handleTileClick(e)); 
 
 		puzzle.appendChild(tile);
 	}
 }
 
+/*
+ * Checks for solved puzzled 
+ *
+ */
 
 const checkSolvedPuzzle = () =>{
 
-	for (let i=1; tiles.length-1; i++) {
+	for (let i=0; i<tiles.length; i++) {
 		if (tiles[i] !== i ) {
 			return false;
 		}
@@ -71,16 +73,24 @@ const checkSolvedPuzzle = () =>{
 const handleTileClick = (e) => {
 
 	let selectedTile = e.target; 
-	
+	let selectedTileNum = parseInt(selectedTile.innerHTML);
+	let selectedTilePos = tiles.indexOf(selectedTileNum);
+	let blankTilePos = tiles.indexOf(0);
+
 	// Ignore click on blank tile  
-	if (selectedTile.id == puzzleSize) {
+	if (selectedTile.classList.contains('blank')) {
 		e.preventDefault(); 
 		e.stopPropagation();
 		return false;
 	}
 
+	console.log(tiles)
+
+	tiles.splice(selectedTilePos, 1, 0);
+	tiles.splice(blankTilePos, 1, selectedTileNum); 
+	
+	console.log(tiles)
 	checkSolvedPuzzle(); 
 }
-
 
 initPuzzle();
