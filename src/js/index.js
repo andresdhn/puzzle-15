@@ -8,20 +8,24 @@
  * 
  */
 
-let tiles 			= [];
 const puzzleSize 	= 3;
 const puzzle 		= document.getElementById('puzzle');
+const puzzleSizeSq 	= Math.pow(puzzleSize, 2)
 
+let tiles 		= Array(puzzleSizeSq).fill().map( (e, i) => i );
 
 /*
  * Shuffle Array  
  */
 
 const shuffleTiles = () => {
-	let puzzleSizeSq = Math.pow(puzzleSize, 2)
-	return Array(puzzleSizeSq).fill().map( (e, i) => i ).sort( () => Math.random()-0.5 )
+	return tiles.sort( () => Math.random()-0.5 )
 }
 
+
+/*
+ * Initializes game  
+ */
 
 const initPuzzle = () => {
 	tiles = shuffleTiles()
@@ -44,6 +48,28 @@ const initPuzzle = () => {
 		puzzle.appendChild(tile)
 	}
 }
+
+/*
+ * Compares to a solved Array  
+ */
+
+const checkSolved = () => {
+
+	let tilesOrdered = Array(puzzleSizeSq).fill().map( (e, i) => i ).sort((a, b) => a - b)
+	tilesOrdered.push(tilesOrdered.splice(0, 1)[0])
+	
+	for (let i=0; i<tiles.length; i++){
+		if (tiles[i] !== tilesOrdered[i]){
+			return false
+		}
+	}
+
+	return true;
+}
+
+/*
+ * Handles Click event  
+ */
 
 const handleTileClick = (e) => {
 
@@ -70,7 +96,7 @@ const handleTileClick = (e) => {
 			tiles.splice(selectedTilePos, 1, 0)
 			tiles.splice(blankTilePos, 1, selectedTileNum)
 			renderPuzzle()
-
+			
 			break
 
 		default: 
@@ -79,7 +105,14 @@ const handleTileClick = (e) => {
 			return false	
 	}
 
+	if (checkSolved()){
+		alert('Congratz! You did it!')
+	}
 }
+
+/*
+ * Render Puzzle after every play  
+ */
 
 const renderPuzzle = () => {
 	let tilesDOM = document.getElementsByClassName('puzzle__tile')
