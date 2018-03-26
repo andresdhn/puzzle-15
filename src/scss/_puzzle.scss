@@ -1,5 +1,5 @@
 
-$puzzle-size: 5; 
+$puzzle-size: 4; 
 $max-tile-size: 90%/$puzzle-size; 
 
 #puzzle {
@@ -60,7 +60,5 @@ $max-tile-size: 90%/$puzzle-size;
 			background-color: $color-gray-80;	
 		}
 	}
-
-
-
 }
+
