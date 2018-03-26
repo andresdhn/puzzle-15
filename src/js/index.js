@@ -8,9 +8,9 @@
  * 
  */
 
-let tiles 			= []
-const puzzleSize 	= Math.pow(4, 2)
-const puzzle 		= document.getElementById('puzzle')
+let tiles 			= [];
+const puzzleSize 	= 3;
+const puzzle 		= document.getElementById('puzzle');
 
 
 /*
@@ -18,7 +18,8 @@ const puzzle 		= document.getElementById('puzzle')
  */
 
 const shuffleTiles = () => {
-	return Array(puzzleSize).fill().map( (e, i) => i ).sort( () => Math.random()-0.5 )
+	let puzzleSizeSq = Math.pow(puzzleSize, 2)
+	return Array(puzzleSizeSq).fill().map( (e, i) => i ).sort( () => Math.random()-0.5 )
 }
 
 
@@ -59,20 +60,25 @@ const handleTileClick = (e) => {
 	}
 
 	// Validate adjacent tile
-	if ( selectedTilePos + 1 !== blankTilePos && selectedTilePos - 1 !== blankTilePos){
+	switch (blankTilePos){
+		case selectedTilePos + 1: // next tile
+		case selectedTilePos - 1: // Prev tile
+		case selectedTilePos + puzzleSize: // bottom tile
+		case selectedTilePos - puzzleSize: // top tile
+			
+			// update array
+			tiles.splice(selectedTilePos, 1, 0)
+			tiles.splice(blankTilePos, 1, selectedTileNum)
+			renderPuzzle()
 
-		console.log(selectedTilePos, blankTilePos)
+			break
 
-		e.preventDefault()
-		e.stopPropagation()
-		return false	
+		default: 
+			e.preventDefault()
+			e.stopPropagation()
+			return false	
 	}
 
-	tiles.splice(selectedTilePos, 1, 0)
-	tiles.splice(blankTilePos, 1, selectedTileNum)
-
-	renderPuzzle()
-	
 }
 
 const renderPuzzle = () => {
@@ -82,7 +88,7 @@ const renderPuzzle = () => {
 		
 		tilesDOM[i].classList.remove('blank')
 
-		if (tiles[i] ==0){
+		if (tiles[i]==0){
 			tilesDOM[i].classList.add('blank')
 			tilesDOM[i].innerHTML = ''
 		}

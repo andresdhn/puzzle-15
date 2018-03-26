@@ -10,7 +10,7 @@
  */
 
 var tiles = [];
-var puzzleSize = Math.pow(4, 2);
+var puzzleSize = 3;
 var puzzle = document.getElementById('puzzle');
 
 /*
@@ -18,7 +18,8 @@ var puzzle = document.getElementById('puzzle');
  */
 
 var shuffleTiles = function shuffleTiles() {
-	return Array(puzzleSize).fill().map(function (e, i) {
+	var puzzleSizeSq = Math.pow(puzzleSize, 2);
+	return Array(puzzleSizeSq).fill().map(function (e, i) {
 		return i;
 	}).sort(function () {
 		return Math.random() - 0.5;
@@ -63,19 +64,25 @@ var handleTileClick = function handleTileClick(e) {
 	}
 
 	// Validate adjacent tile
-	if (selectedTilePos + 1 !== blankTilePos && selectedTilePos - 1 !== blankTilePos) {
+	switch (blankTilePos) {
+		case selectedTilePos + 1: // next tile
+		case selectedTilePos - 1: // Prev tile
+		case selectedTilePos + puzzleSize: // bottom tile
+		case selectedTilePos - puzzleSize:
+			// top tile
 
-		console.log(selectedTilePos, blankTilePos);
+			// update array
+			tiles.splice(selectedTilePos, 1, 0);
+			tiles.splice(blankTilePos, 1, selectedTileNum);
+			renderPuzzle();
 
-		e.preventDefault();
-		e.stopPropagation();
-		return false;
+			break;
+
+		default:
+			e.preventDefault();
+			e.stopPropagation();
+			return false;
 	}
-
-	tiles.splice(selectedTilePos, 1, 0);
-	tiles.splice(blankTilePos, 1, selectedTileNum);
-
-	renderPuzzle();
 };
 
 var renderPuzzle = function renderPuzzle() {
