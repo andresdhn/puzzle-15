@@ -25,16 +25,11 @@ var shuffleTiles = function shuffleTiles() {
 	});
 };
 
-/*
- * Initializes puzzle an injects tiles
- */
-
 var initPuzzle = function initPuzzle() {
 	tiles = shuffleTiles();
 
 	for (var i = 0; i < tiles.length; i++) {
 		var tile = document.createElement('div');
-		tile.id = tiles[i];
 
 		if (tiles[i] === 0) {
 			// tile 0 is blank
@@ -42,7 +37,7 @@ var initPuzzle = function initPuzzle() {
 		} else {
 			// tile class and number
 			tile.innerHTML = tiles[i];
-			tile.classList.add('puzzle__tile', 'puzzle__tile--' + tiles[i]);
+			tile.classList.add('puzzle__tile');
 		}
 
 		tile.addEventListener('click', function (e) {
@@ -52,27 +47,6 @@ var initPuzzle = function initPuzzle() {
 		puzzle.appendChild(tile);
 	}
 };
-
-/*
- * Checks for solved puzzled 
- *
- */
-
-var checkSolvedPuzzle = function checkSolvedPuzzle() {
-
-	for (var i = 0; i < tiles.length; i++) {
-		if (tiles[i] !== i) {
-			return false;
-		}
-	}
-
-	alert('You did it!');
-	initPuzzle();
-};
-
-/*
- * Handles click event on tiles
- */
 
 var handleTileClick = function handleTileClick(e) {
 
@@ -88,13 +62,26 @@ var handleTileClick = function handleTileClick(e) {
 		return false;
 	}
 
-	console.log(tiles);
-
 	tiles.splice(selectedTilePos, 1, 0);
 	tiles.splice(blankTilePos, 1, selectedTileNum);
 
-	console.log(tiles);
-	checkSolvedPuzzle();
+	renderPuzzle();
+};
+
+var renderPuzzle = function renderPuzzle() {
+	var tilesDOM = document.getElementsByClassName('puzzle__tile');
+
+	for (var i = 0; i < tiles.length; i++) {
+
+		tilesDOM[i].classList.remove('blank');
+
+		if (tiles[i] == 0) {
+			tilesDOM[i].classList.add('blank');
+			tilesDOM[i].innerHTML = '';
+		} else {
+			tilesDOM[i].innerHTML = tiles[i];
+		}
+	}
 };
 
 initPuzzle();

@@ -3,13 +3,13 @@ $puzzle-size: 4;
 $max-tile-size: 90%/$puzzle-size; 
 
 #puzzle {
-	display: table;
+	position: relative;
 	width: 350px;
 	height: 350px;
 
 	margin-right: auto;
   	margin-left: auto;
-  	padding: 10px;
+  	padding: 10px 10px 10px 15px;
   	
 	background-color: $color-neutral;
 	border-radius: 15px;
@@ -28,14 +28,11 @@ $max-tile-size: 90%/$puzzle-size;
 	width: $max-tile-size; 
 	height: $max-tile-size;
 	
-	display: flex;
-	justify-content: center;
-
 	margin: 1%;
 	border-radius: 5px;
 	text-align: center;
 
-	transition: all 1s ease-out;
+	transition: all .2s ease-out;
 
 	&:not(.blank){
 		background-color: $color-gray;

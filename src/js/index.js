@@ -8,29 +8,25 @@
  * 
  */
 
-let tiles 			= []; 
-const puzzleSize 	= Math.pow(4, 2); 
-const puzzle 		= document.getElementById('puzzle');
+let tiles 			= []
+const puzzleSize 	= Math.pow(4, 2)
+const puzzle 		= document.getElementById('puzzle')
+
 
 /*
  * Shuffle Array  
  */
 
 const shuffleTiles = () => {
-	return Array(puzzleSize).fill().map( (e, i) => i ).sort( () => Math.random()-0.5 );
+	return Array(puzzleSize).fill().map( (e, i) => i ).sort( () => Math.random()-0.5 )
 }
 
 
-/*
- * Initializes puzzle an injects tiles
- */
-
 const initPuzzle = () => {
-	tiles = shuffleTiles(); 
-
+	tiles = shuffleTiles()
+	
 	for (let i=0; i<tiles.length; i++){
-		let tile = document.createElement('div');
-		tile.id = tiles[i]; 
+		let tile = document.createElement('div')
 		
 		if (tiles[i]===0) {
 			// tile 0 is blank
@@ -38,59 +34,52 @@ const initPuzzle = () => {
 		}
 		else {
 			// tile class and number
-			tile.innerHTML = tiles[i];	
-			tile.classList.add('puzzle__tile',  'puzzle__tile--' + tiles[i] )
+			tile.innerHTML = tiles[i]	
+			tile.classList.add('puzzle__tile')
 		}
 		
-		tile.addEventListener('click', (e) => handleTileClick(e)); 
+		tile.addEventListener('click', (e) => handleTileClick(e))
 
-		puzzle.appendChild(tile);
+		puzzle.appendChild(tile)
 	}
 }
-
-/*
- * Checks for solved puzzled 
- *
- */
-
-const checkSolvedPuzzle = () =>{
-
-	for (let i=0; i<tiles.length; i++) {
-		if (tiles[i] !== i ) {
-			return false;
-		}
-	}
-
-	alert('You did it!'); 
-	initPuzzle();
-}
-
-
-/*
- * Handles click event on tiles
- */
 
 const handleTileClick = (e) => {
 
-	let selectedTile = e.target; 
-	let selectedTileNum = parseInt(selectedTile.innerHTML);
-	let selectedTilePos = tiles.indexOf(selectedTileNum);
-	let blankTilePos = tiles.indexOf(0);
+	let selectedTile = e.target 
+	let selectedTileNum = parseInt(selectedTile.innerHTML)
+	let selectedTilePos = tiles.indexOf(selectedTileNum)
+	let blankTilePos = tiles.indexOf(0)
 
 	// Ignore click on blank tile  
 	if (selectedTile.classList.contains('blank')) {
-		e.preventDefault(); 
-		e.stopPropagation();
-		return false;
+		e.preventDefault()
+		e.stopPropagation()
+		return false
 	}
 
-	console.log(tiles)
+	tiles.splice(selectedTilePos, 1, 0)
+	tiles.splice(blankTilePos, 1, selectedTileNum)
 
-	tiles.splice(selectedTilePos, 1, 0);
-	tiles.splice(blankTilePos, 1, selectedTileNum); 
+	renderPuzzle()
 	
-	console.log(tiles)
-	checkSolvedPuzzle(); 
 }
 
-initPuzzle();
+const renderPuzzle = () => {
+	let tilesDOM = document.getElementsByClassName('puzzle__tile')
+	
+	for (let i=0; i<tiles.length; i++){
+		
+		tilesDOM[i].classList.remove('blank')
+
+		if (tiles[i] ==0){
+			tilesDOM[i].classList.add('blank')
+			tilesDOM[i].innerHTML = ''
+		}
+		else {
+			tilesDOM[i].innerHTML = tiles[i]	
+		}
+	}
+}
+
+initPuzzle()
