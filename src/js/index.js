@@ -58,6 +58,16 @@ const handleTileClick = (e) => {
 		return false
 	}
 
+	// Validate adjacent tile
+	if ( selectedTilePos + 1 !== blankTilePos && selectedTilePos - 1 !== blankTilePos){
+
+		console.log(selectedTilePos, blankTilePos)
+
+		e.preventDefault()
+		e.stopPropagation()
+		return false	
+	}
+
 	tiles.splice(selectedTilePos, 1, 0)
 	tiles.splice(blankTilePos, 1, selectedTileNum)
 
