@@ -93,7 +93,7 @@ const renderPuzzle = () => {
 			tilesDOM[i].innerHTML = ''
 		}
 		else {
-			tilesDOM[i].innerHTML = tiles[i]	
+			tilesDOM[i].innerHTML = tiles[i]
 		}
 	}
 }

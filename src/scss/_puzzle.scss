@@ -30,6 +30,10 @@ $max-tile-size: 90%/$puzzle-size;
 	display: block;
 	width: $max-tile-size; 
 	height: $max-tile-size;
+
+	display: flex;
+	justify-content: center; /* align horizontal */
+	align-items: center; /* align vertical */
 	
 	margin: 1%;
 	border-radius: 5px;
@@ -38,7 +42,16 @@ $max-tile-size: 90%/$puzzle-size;
 	transition: all .2s ease-out;
 
 	&:not(.blank){
-		background-color: $color-gray;
+		box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+		
+		&:nth-child(odd){
+			background-color: $color-gray;
+		}
+		&:nth-child(even){
+			background-color: $color-gray-80;	
+		}
 	}
+
+
 
 }
