@@ -9,7 +9,7 @@
  * 
  */
 
-var puzzleSize = 3;
+var puzzleSize = 5;
 var puzzle = document.getElementById('puzzle');
 var puzzleSizeSq = Math.pow(puzzleSize, 2);
 

@@ -1,5 +1,5 @@
 
-$puzzle-size: 3; 
+$puzzle-size: 5; 
 $max-tile-size: 90%/$puzzle-size; 
 
 #puzzle {
@@ -23,6 +23,15 @@ $max-tile-size: 90%/$puzzle-size;
 		display: block;
 		padding-bottom: 100%;
 	}
+	
+	@media screen and (max-width: 350px){
+		max-height: 35%;
+	}
+
+	@media screen and (max-width: 250px){
+		max-height: 25%;
+	}
+
 }
 
 .puzzle__tile {

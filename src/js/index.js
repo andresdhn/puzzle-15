@@ -8,7 +8,7 @@
  * 
  */
 
-const puzzleSize 	= 3;
+const puzzleSize 	= 5;
 const puzzle 		= document.getElementById('puzzle');
 const puzzleSizeSq 	= Math.pow(puzzleSize, 2)
 
