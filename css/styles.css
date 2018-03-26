@@ -51,12 +51,18 @@ body {
     content: '';
     display: block;
     padding-bottom: 100%; }
+  @media screen and (max-width: 350px) {
+    #puzzle {
+      max-height: 35%; } }
+  @media screen and (max-width: 250px) {
+    #puzzle {
+      max-height: 25%; } }
 
 .puzzle__tile {
   float: left;
   display: block;
-  width: 30%;
-  height: 30%;
+  width: 18%;
+  height: 18%;
   display: flex;
   justify-content: center;
   /* align horizontal */
