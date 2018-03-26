@@ -9,22 +9,27 @@
  * 
  */
 
-var tiles = [];
 var puzzleSize = 3;
 var puzzle = document.getElementById('puzzle');
+var puzzleSizeSq = Math.pow(puzzleSize, 2);
+
+var tiles = Array(puzzleSizeSq).fill().map(function (e, i) {
+	return i;
+});
 
 /*
  * Shuffle Array  
  */
 
 var shuffleTiles = function shuffleTiles() {
-	var puzzleSizeSq = Math.pow(puzzleSize, 2);
-	return Array(puzzleSizeSq).fill().map(function (e, i) {
-		return i;
-	}).sort(function () {
+	return tiles.sort(function () {
 		return Math.random() - 0.5;
 	});
 };
+
+/*
+ * Initializes game  
+ */
 
 var initPuzzle = function initPuzzle() {
 	tiles = shuffleTiles();
@@ -48,6 +53,32 @@ var initPuzzle = function initPuzzle() {
 		puzzle.appendChild(tile);
 	}
 };
+
+/*
+ * Compares to a solved Array  
+ */
+
+var checkSolved = function checkSolved() {
+
+	var tilesOrdered = Array(puzzleSizeSq).fill().map(function (e, i) {
+		return i;
+	}).sort(function (a, b) {
+		return a - b;
+	});
+	tilesOrdered.push(tilesOrdered.splice(0, 1)[0]);
+
+	for (var i = 0; i < tiles.length; i++) {
+		if (tiles[i] !== tilesOrdered[i]) {
+			return false;
+		}
+	}
+
+	return true;
+};
+
+/*
+ * Handles Click event  
+ */
 
 var handleTileClick = function handleTileClick(e) {
 
@@ -83,7 +114,15 @@ var handleTileClick = function handleTileClick(e) {
 			e.stopPropagation();
 			return false;
 	}
+
+	if (checkSolved()) {
+		alert('Congratz! You did it!');
+	}
 };
+
+/*
+ * Render Puzzle after every play  
+ */
 
 var renderPuzzle = function renderPuzzle() {
 	var tilesDOM = document.getElementsByClassName('puzzle__tile');
