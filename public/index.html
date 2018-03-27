@@ -10,9 +10,14 @@
 </head>
 <body>
     <div class="wrapper">
-    	<div id="puzzle"></div>    
+        <div>
+            <label for="psize">Puzzle size:</label>
+            <input id="psize" name="psize" type="number" min="3" max="10" value="4" />
+        </div>
+        <div id="puzzle"></div>    
         <p class="author">Puzzle 15 by @andresdhn</p>
     </div>
+
     <script src="./js/puzzle.js"></script>
     <script src="./js/index.js"></script>
 </body>

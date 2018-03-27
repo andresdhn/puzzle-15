@@ -5,8 +5,13 @@ $max-tile-size: 80%/$puzzle-size;
 @mixin sizes(){
 	@for $i from 3 through 10 {
 		&.size#{$i}{
-			max-width: $i*50 + 100px;
-			max-height: $i*50 + 100px;
+			max-width: $i*100 + 100px;
+			max-height: $i*100 + 100px;
+
+			@if $i > 6 {
+				padding: 1% 0 0 1%;
+			}
+			
 
 			.puzzle__tile {
 				width: 80%/$i; 
@@ -23,6 +28,8 @@ $max-tile-size: 80%/$puzzle-size;
 	
 	margin-right: auto;
   	margin-left: auto;
+
+  	padding: 2% 0 0 2%;
   	
 	background-color: $color-neutral;
 	border-radius: 15px;
@@ -35,16 +42,17 @@ $max-tile-size: 80%/$puzzle-size;
 		padding-bottom: 100%;
 	}
 	
-	@media screen and (max-width: 350px){
-		max-height: 35%;
-	}
-
-	@media screen and (max-width: 250px){
-		max-height: 25%;
-	}
-
 	@include sizes; 
-	
+
+	&[class^="size"]{
+		@media screen and (max-width: 500px){
+			max-height: 35%;
+		}
+
+		@media screen and (max-width: 350px){
+			max-height: 25%;
+		}
+	}
 }
 
 .puzzle__tile {

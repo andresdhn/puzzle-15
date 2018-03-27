@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 /*
  *
@@ -7,6 +7,19 @@
  * @author [Andres Hernandez](https://github.com/andresdhn)
  * 
  */
+(function () {
 
-var p15 = new puzzle();
-p15.initPuzzle();
+	var sizeInput = document.getElementById('psize');
+	var p15 = new puzzle();
+
+	var handleSizeChange = function handleSizeChange() {
+		p15.initPuzzle(sizeVal());
+	};
+
+	var sizeVal = function sizeVal() {
+		return parseInt(sizeInput.value);
+	};
+
+	p15.initPuzzle(sizeVal());
+	sizeInput.addEventListener('change', handleSizeChange);
+})();

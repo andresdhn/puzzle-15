@@ -11,8 +11,8 @@
 const puzzle = function() { 
 
 	let tiles 			= [] 
-	let puzzleSize 		= 4
-	let puzzleSizeSq 	= Math.pow(puzzleSize, 2)
+	let puzzleSize 		= 0
+	let puzzleSizeSq 	= 0
 	const puzzleDOM		= document.getElementById('puzzle');
 
 	/* 
@@ -25,10 +25,12 @@ const puzzle = function() {
 	/*
 	 * Initizlizes Game
 	 */
-	const initPuzzle = () => {
+	const initPuzzle = (size) => {
+		puzzleSize = size
+		puzzleSizeSq = Math.pow(puzzleSize, 2)
 		puzzleDOM.innerHTML = ''
 		puzzleDOM.className = 'size' + puzzleSize
-		
+
 		tiles = shuffleTiles()
 
 		for (let i=0; i<tiles.length; i++){
@@ -126,15 +128,7 @@ const puzzle = function() {
 		}
 	}
 
-	const changeSize = (size) => {
-		puzzleSize = size
-		puzzleSizeSq = Math.pow(puzzleSize, 2)
-		initPuzzle()
-
-	}
-
 	return {
-		initPuzzle: initPuzzle,
-		changeSize: changeSize
+		initPuzzle: initPuzzle
 	}
 }

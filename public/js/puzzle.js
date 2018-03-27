@@ -12,8 +12,8 @@
 var puzzle = function puzzle() {
 
 	var tiles = [];
-	var puzzleSize = 4;
-	var puzzleSizeSq = Math.pow(puzzleSize, 2);
+	var puzzleSize = 0;
+	var puzzleSizeSq = 0;
 	var puzzleDOM = document.getElementById('puzzle');
 
 	/* 
@@ -30,7 +30,9 @@ var puzzle = function puzzle() {
 	/*
   * Initizlizes Game
   */
-	var initPuzzle = function initPuzzle() {
+	var initPuzzle = function initPuzzle(size) {
+		puzzleSize = size;
+		puzzleSizeSq = Math.pow(puzzleSize, 2);
 		puzzleDOM.innerHTML = '';
 		puzzleDOM.className = 'size' + puzzleSize;
 
@@ -137,14 +139,7 @@ var puzzle = function puzzle() {
 		}
 	};
 
-	var changeSize = function changeSize(size) {
-		puzzleSize = size;
-		puzzleSizeSq = Math.pow(puzzleSize, 2);
-		initPuzzle();
-	};
-
 	return {
-		initPuzzle: initPuzzle,
-		changeSize: changeSize
+		initPuzzle: initPuzzle
 	};
 };
