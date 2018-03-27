@@ -32,6 +32,8 @@ var puzzle = function puzzle() {
   */
 	var initPuzzle = function initPuzzle() {
 		puzzleDOM.innerHTML = '';
+		puzzleDOM.className = 'size' + puzzleSize;
+
 		tiles = shuffleTiles();
 
 		for (var i = 0; i < tiles.length; i++) {
