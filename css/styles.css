@@ -12,22 +12,37 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700");
 * {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 18px; }
 
 html,
 body {
   width: 100%;
   height: 100%;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 700;
-  font-style: normal;
-  font-size: 18px;
   color: rgba(0, 0, 0, 0.6); }
 
 .wrapper {
   width: 100%;
   height: 100%;
   margin-top: 10vh; }
+
+label,
+#psize {
+  display: block;
+  width: 100px;
+  padding: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 16px;
+  font-weight: 400; }
+
+#psize {
+  margin-bottom: 30px;
+  border: 1px solid #cccccc;
+  border-radius: 4px; }
 
 .author {
   margin-top: 40px;
@@ -41,6 +56,7 @@ body {
   height: 100%;
   margin-right: auto;
   margin-left: auto;
+  padding: 2% 0 0 2%;
   background-color: rgba(204, 204, 204, 0.2);
   border-radius: 15px;
   cursor: pointer; }
@@ -48,60 +64,64 @@ body {
     content: '';
     display: block;
     padding-bottom: 100%; }
-  @media screen and (max-width: 350px) {
-    #puzzle {
-      max-height: 35%; } }
-  @media screen and (max-width: 250px) {
-    #puzzle {
-      max-height: 25%; } }
   #puzzle.size3 {
-    max-width: 250px;
-    max-height: 250px; }
+    max-width: 400px;
+    max-height: 400px; }
     #puzzle.size3 .puzzle__tile {
       width: 26.66667%;
       height: 26.66667%; }
   #puzzle.size4 {
-    max-width: 300px;
-    max-height: 300px; }
+    max-width: 500px;
+    max-height: 500px; }
     #puzzle.size4 .puzzle__tile {
       width: 20%;
       height: 20%; }
   #puzzle.size5 {
-    max-width: 350px;
-    max-height: 350px; }
+    max-width: 600px;
+    max-height: 600px; }
     #puzzle.size5 .puzzle__tile {
       width: 16%;
       height: 16%; }
   #puzzle.size6 {
-    max-width: 400px;
-    max-height: 400px; }
+    max-width: 700px;
+    max-height: 700px; }
     #puzzle.size6 .puzzle__tile {
       width: 13.33333%;
       height: 13.33333%; }
   #puzzle.size7 {
-    max-width: 450px;
-    max-height: 450px; }
+    max-width: 800px;
+    max-height: 800px;
+    padding: 1% 0 0 1%; }
     #puzzle.size7 .puzzle__tile {
       width: 11.42857%;
       height: 11.42857%; }
   #puzzle.size8 {
-    max-width: 500px;
-    max-height: 500px; }
+    max-width: 900px;
+    max-height: 900px;
+    padding: 1% 0 0 1%; }
     #puzzle.size8 .puzzle__tile {
       width: 10%;
       height: 10%; }
   #puzzle.size9 {
-    max-width: 550px;
-    max-height: 550px; }
+    max-width: 1000px;
+    max-height: 1000px;
+    padding: 1% 0 0 1%; }
     #puzzle.size9 .puzzle__tile {
       width: 8.88889%;
       height: 8.88889%; }
   #puzzle.size10 {
-    max-width: 600px;
-    max-height: 600px; }
+    max-width: 1100px;
+    max-height: 1100px;
+    padding: 1% 0 0 1%; }
     #puzzle.size10 .puzzle__tile {
       width: 8%;
       height: 8%; }
+  @media screen and (max-width: 500px) {
+    #puzzle[class^="size"] {
+      max-height: 35%; } }
+  @media screen and (max-width: 350px) {
+    #puzzle[class^="size"] {
+      max-height: 25%; } }
 
 .puzzle__tile {
   float: left;
