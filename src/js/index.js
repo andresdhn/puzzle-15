@@ -6,7 +6,7 @@
  * @author [Andres Hernandez](https://github.com/andresdhn)
  * 
  */
- (()=>{
+ (function(){
 
  	let sizeInput = document.getElementById('psize')
 	let p15 = new puzzle

@@ -9,9 +9,12 @@ $max-tile-size: 80%/$puzzle-size;
 			max-height: $i*100 + 100px;
 
 			@if $i > 6 {
-				padding: 1% 0 0 1%;
+				padding: 3% 0 0 3%;
 			}
 			
+			@if $i > 8 {
+				padding: 1%;	
+			}
 
 			.puzzle__tile {
 				width: 80%/$i; 
@@ -29,7 +32,7 @@ $max-tile-size: 80%/$puzzle-size;
 	margin-right: auto;
   	margin-left: auto;
 
-  	padding: 2% 0 0 2%;
+  	padding: 4% 0 0 4%;
   	
 	background-color: $color-neutral;
 	border-radius: 15px;
