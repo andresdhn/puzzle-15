@@ -39,11 +39,8 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
-  max-width: 350px;
-  max-height: 350px;
   margin-right: auto;
   margin-left: auto;
-  padding: 10px 10px 10px 15px;
   background-color: rgba(204, 204, 204, 0.2);
   border-radius: 15px;
   cursor: pointer; }
@@ -57,12 +54,58 @@ body {
   @media screen and (max-width: 250px) {
     #puzzle {
       max-height: 25%; } }
+  #puzzle.size3 {
+    max-width: 250px;
+    max-height: 250px; }
+    #puzzle.size3 .puzzle__tile {
+      width: 26.66667%;
+      height: 26.66667%; }
+  #puzzle.size4 {
+    max-width: 300px;
+    max-height: 300px; }
+    #puzzle.size4 .puzzle__tile {
+      width: 20%;
+      height: 20%; }
+  #puzzle.size5 {
+    max-width: 350px;
+    max-height: 350px; }
+    #puzzle.size5 .puzzle__tile {
+      width: 16%;
+      height: 16%; }
+  #puzzle.size6 {
+    max-width: 400px;
+    max-height: 400px; }
+    #puzzle.size6 .puzzle__tile {
+      width: 13.33333%;
+      height: 13.33333%; }
+  #puzzle.size7 {
+    max-width: 450px;
+    max-height: 450px; }
+    #puzzle.size7 .puzzle__tile {
+      width: 11.42857%;
+      height: 11.42857%; }
+  #puzzle.size8 {
+    max-width: 500px;
+    max-height: 500px; }
+    #puzzle.size8 .puzzle__tile {
+      width: 10%;
+      height: 10%; }
+  #puzzle.size9 {
+    max-width: 550px;
+    max-height: 550px; }
+    #puzzle.size9 .puzzle__tile {
+      width: 8.88889%;
+      height: 8.88889%; }
+  #puzzle.size10 {
+    max-width: 600px;
+    max-height: 600px; }
+    #puzzle.size10 .puzzle__tile {
+      width: 8%;
+      height: 8%; }
 
 .puzzle__tile {
   float: left;
   display: block;
-  width: 22.5%;
-  height: 22.5%;
   display: flex;
   justify-content: center;
   /* align horizontal */

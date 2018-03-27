@@ -27,6 +27,8 @@ const puzzle = function() {
 	 */
 	const initPuzzle = () => {
 		puzzleDOM.innerHTML = ''
+		puzzleDOM.className = 'size' + puzzleSize
+		
 		tiles = shuffleTiles()
 
 		for (let i=0; i<tiles.length; i++){

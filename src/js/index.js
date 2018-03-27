@@ -7,9 +7,8 @@
  * 
  */
 
-( () => {
+
 	
 	let p15 = new puzzle;
 	p15.initPuzzle();
 
-})()

@@ -8,8 +8,5 @@
  * 
  */
 
-(function () {
-
-  var p15 = new puzzle();
-  p15.initPuzzle();
-})();
+var p15 = new puzzle();
+p15.initPuzzle();
