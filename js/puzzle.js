@@ -6,7 +6,7 @@
  * puzzle.js
  * @version 1.0.0
  * @author [Andres Hernandez](https://github.com/andresdhn)
- * 
+ *
  */
 
 var puzzle = function puzzle() {
@@ -16,8 +16,8 @@ var puzzle = function puzzle() {
 	var puzzleSizeSq = 0;
 	var puzzleDOM = document.getElementById('puzzle');
 
-	/* 
-  * Randomizes the Array 
+	/*
+  * Randomizes the Array
   */
 	var shuffleTiles = function shuffleTiles() {
 		return Array(puzzleSizeSq).fill().map(function (e, i) {
@@ -28,7 +28,7 @@ var puzzle = function puzzle() {
 	};
 
 	/*
-  * Initizlizes Game
+  * Initializes Game
   */
 	var initPuzzle = function initPuzzle(size) {
 		puzzleSize = size;
@@ -88,7 +88,7 @@ var puzzle = function puzzle() {
 		var selectedTilePos = tiles.indexOf(selectedTileNum);
 		var blankTilePos = tiles.indexOf(0);
 
-		// Ignore click on blank tile  
+		// Ignore click on blank tile
 		if (selectedTile.classList.contains('blank')) {
 			e.preventDefault();
 			e.stopPropagation();
