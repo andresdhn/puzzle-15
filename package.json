@@ -17,11 +17,10 @@
     "sass:watch": "node-sass -w src/scss -o public/css"
   },
   "devDependencies": {
+    "babel": "^6.23.0",
     "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "npm-run-all": "^4.1.2"
-  },
-  "dependencies": {
+    "babel-preset-env": "^1.7.0",
+    "npm-run-all": "^4.1.5",
     "node-sass": "^4.13.0"
   }
 }
